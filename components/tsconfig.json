@@ -5,9 +5,9 @@
         "useDefineForClassFields": true,
 
         /* Bundler mode */
-        "moduleResolution": "bundler",
         "resolveJsonModule": true,
         "isolatedModules": true,
         "jsx": "react-jsx",
-    }
+    },
+    "include": [ "**/*.ts", "**/*.tsx", ]
 }

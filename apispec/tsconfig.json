@@ -1,9 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-      "target": "ES5",
-      "lib": ["ES2015"],
-
       "isolatedModules": true,
       "noEmit": false,
   },
