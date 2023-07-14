@@ -7,7 +7,8 @@
 ```bash
 nvm use 16
 yarn
-yarn dlx @yarnpkg/sdks vscode
+yarn dlx @yarnpkg/sdks vscode 
+yarn f msw init public # msw 설치
 ```
 
 ### 1-2. VSCode 실행
