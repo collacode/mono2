@@ -1,0 +1,15 @@
+{
+  "name": "@collacode/apispec",
+  "packageManager": "yarn@3.6.1",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "lint": "eslint --fix .",
+    "build": "tsc --outDir dist",
+    "dev": "tsc --watch --outDir dist"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  }
+}
