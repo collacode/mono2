@@ -2,11 +2,10 @@
   "compilerOptions": {
     /* Projects */
     "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
-    // 이거 필요한가?
-    // "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
 
     /* Language and Environment */
-    "target": "es2016",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    // Node v16 지원 기준 (Nest.js, Next.js)
+    "target": "ES2022",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
 
     /* Modules */
     "module": "commonjs",                                /* Specify what module code is generated. */
@@ -17,14 +16,10 @@
     /* Interop Constraints */
     "allowSyntheticDefaultImports": true,                /* Allow 'import x from y' when a module doesn't have a default export. */
     "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */
-    // API는 false로 지정
     "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */
 
     /* Type Checking */
     "strict": true,                                      /* Enable all strict type-checking options. */
-
-    // switch를 잘 안 쓰긴 한데, switch 쓰는 경우 필수로 키면 좋을 듯
-    "noFallthroughCasesInSwitch": true,               /* Enable error reporting for fallthrough cases in switch statements. */
 
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
