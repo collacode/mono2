@@ -22,12 +22,13 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ## 2. 실행 (사용 방법)
 
-`yarn a {script}`을 prefix로 명령을 실행할 수 있다. 직접 폴더로 들어가서 `yarn {script}`를 실행해도 된다.
+`yarn {패키지alias} {script}`을 prefix로 명령을 실행할 수 있다. 직접 폴더로 들어가서 `yarn {script}`를 실행해도 된다.
 공통적으로 `lint` script를 갖고 있다.
 `test` script는 API SPEC을 제외한 패키지들이 모두 갖고 있다.
 
 ### 2-1. API 서버
 
+- alias: `a` (e.g. `yarn a start`)
 - 개발 서버를 실행하려면 `start`
 - HMR을 적용하려면 `start:dev`
 - 빌드하려면 `build`
@@ -37,11 +38,13 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ### 2-2. API SPEC
 
+- alias: `as` (e.g. `yarn as dev`)
 - watch 모드로 트랜스파일링하려면 `dev`
 - 한 번만 트랜스파일링하려면 `build`
 
 ### 2-3. Components
 
+- alias: `c` (e.g. `yarn c dev`)
 - 개발 서버를 실행하려면 `dev`
 - 빌드하려면 `build`
 - 테스트하려면 `test`
@@ -49,6 +52,7 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ### 2-3. frontend (Next.js 서버)
 
+- alias: `f` (e.g. `yarn f dev`)
 - 개발 서버를 실행하려면 `dev`
 - 빌드하려면 `build`
 - 테스트하려면 `test`
