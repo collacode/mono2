@@ -13,7 +13,8 @@
     "a": "yarn workspace @collacode/api",
     "as": "yarn workspace @collacode/apispec",
     "c": "yarn workspace @collacode/components",
-    "f": "yarn workspace @collacode/frontend"
+    "f": "yarn workspace @collacode/frontend",
+    "postinstall": "husky install"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.0.0",
@@ -25,6 +26,8 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.3",
     "prettier": "^3.0.0",
     "typescript": "^5.1.3"
   }
