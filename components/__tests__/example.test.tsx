@@ -1,12 +1,26 @@
-import { render, screen, within } from '@testing-library/react';
+import App from '@src/App';
+import Home from '@src/Home';
+import { screen, within } from '@testing-library/react';
 import { expect, test } from 'vitest';
 
-import Home from '../src/Home';
+import { testRender } from './utilities';
 
-test('Example', () => {
-    render(<Home />);
+test('Home', () => {
+    testRender(<Home />);
     const main = within(screen.getByRole('main'));
-    expect(
-        main.getByRole('heading', { level: 1, name: /welcome to next\.js!/i }),
-    ).toBeDefined();
+    const h1 = main.getByRole('heading', {
+        level: 1,
+        name: /welcome to next\.js!/i,
+    });
+
+    expect(h1).toBeInTheDocument();
+});
+
+test('App', async () => {
+    const { testUser } = testRender(<App />);
+    const button = screen.getByRole('button');
+
+    await testUser.click(button);
+
+    expect(button).toHaveTextContent('count is 1');
 });

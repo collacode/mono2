@@ -1,12 +1,13 @@
+import path from 'node:path';
+
 import react from '@vitejs/plugin-react';
-import { defineConfig, type UserConfig } from 'vite';
-import type { InlineConfig } from 'vitest';
+import tsconfigPaths from 'vite-tsconfig-paths';
+import { defineConfig } from 'vitest/config';
 
-type ViteConfig = UserConfig & { test: InlineConfig };
-
-const config: ViteConfig = {
-    plugins: [react()],
+const config = {
+    plugins: [react(), tsconfigPaths()],
     test: {
+        setupFiles: path.resolve(__dirname, './__tests__/setup.ts'),
         environment: 'jsdom',
     },
 };

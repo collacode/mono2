@@ -3,6 +3,8 @@ module.exports = {
         'plugin:react/recommended',
         'plugin:react/jsx-runtime',
         'plugin:react-hooks/recommended',
+        'plugin:testing-library/react',
+        'plugin:jest-dom/recommended',
     ],
     parserOptions: {
         ecmaFeatures: {
@@ -13,8 +15,18 @@ module.exports = {
         react: {
             version: 'detect',
         },
+        'import/resolver': {
+            typescript: {
+                // ESLint의 실행 기준이 root임
+                project: './components/tsconfig.json',
+            },
+        },
     },
-    plugins: ['react-refresh'],
+    plugins: [
+        'testing-library',
+        'jest-dom',
+        'react-refresh'
+    ],
     rules: {
         'react-refresh/only-export-components': 'warn',
     },
