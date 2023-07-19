@@ -1,6 +1,6 @@
+const path = require('path');
 
-const path = require('path')
-const getAbsolutePath = (pathDir) => path.resolve(__dirname, pathDir)
+const getAbsolutePath = (pathDir) => path.resolve(__dirname, pathDir);
 
 module.exports = () => {
     return {
@@ -10,15 +10,15 @@ module.exports = () => {
         },
         output: {
             path: getAbsolutePath('dist'),
-        },  
+        },
         module: {
             rules: [
                 {
                     test: /\.ts$/,
                     exclude: [/node_modules/],
-                    loader: 'ts-loader'
-                }
-            ]
+                    loader: 'ts-loader',
+                },
+            ],
         },
         resolve: { extensions: ['.ts'] },
     };

@@ -1,9 +1,14 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-      "isolatedModules": true,
-      "noEmit": false,
+    "isolatedModules": true,
+    "noEmit": false,
   },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

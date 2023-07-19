@@ -11,6 +11,15 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
         'plugin:prettier/recommended',
+        'prettier',
+    ],
+    overrides: [
+        {
+            files: ['webpack*js'],
+            rules: {
+                '@typescript-eslint/no-var-requires': 'off',
+            },
+        },
     ],
     parser: '@typescript-eslint/parser',
     parserOptions: {
@@ -56,5 +65,10 @@ module.exports = {
         ],
         'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
-    ignorePatterns: ['**/node_modules/**', '**/dist/**', '**/build/**'],
+    ignorePatterns: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/build/**',
+        '.pnp.loader.mjs',
+    ],
 };
