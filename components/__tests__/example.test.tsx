@@ -23,4 +23,7 @@ test('App', async () => {
     await testUser.click(button);
 
     expect(button).toHaveTextContent('count is 1');
+
+    const main = screen.getByRole('main');
+    expect(main).toHaveTextContent('Vite + React');
 });

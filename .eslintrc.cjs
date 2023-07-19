@@ -56,5 +56,5 @@ module.exports = {
         ],
         'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
-    ignorePatterns: ['**/node_modules/**', '**/dist/**', '**/build/**', '.eslintrc.cjs'],
+    ignorePatterns: ['**/node_modules/**', '**/dist/**', '**/build/**'],
 };

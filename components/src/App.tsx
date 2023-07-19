@@ -7,7 +7,7 @@ function App() {
 
     return (
         <>
-            <div className="w-screen h-screen">
+            <main className="w-screen h-screen">
                 <h1>Vite + React</h1>
                 <h1 className="text-3xl font-bold underline">Hello world!</h1>
                 <div className="card">
@@ -16,7 +16,7 @@ function App() {
                     </button>
                 </div>
                 <p className="read-the-docs">Hello World</p>
-            </div>
+            </main>
         </>
     );
 }

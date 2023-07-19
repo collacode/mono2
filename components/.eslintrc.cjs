@@ -22,11 +22,7 @@ module.exports = {
             },
         },
     },
-    plugins: [
-        'testing-library',
-        'jest-dom',
-        'react-refresh'
-    ],
+    plugins: ['testing-library', 'jest-dom', 'react-refresh'],
     rules: {
         'react-refresh/only-export-components': 'warn',
     },
