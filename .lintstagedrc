@@ -1,6 +1,0 @@
-{
-  "./api/**/*.{ts,tsx}": "yarn a lint",
-  "./apispec/**/*.{ts,tsx}": "yarn as lint",
-  "./components/**/*.{ts,tsx}": "yarn c lint",
-  "./frontend/**/*.{ts,tsx}": "yarn f lint"
-}
