@@ -1,14 +1,24 @@
 {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
     // formatOnSave가 활성화되면 ESLint indent에서 해결-원상복구가 반복됨
-    "editor.formatOnSave": false,
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true // ESLint는 이 옵션 하나로 구동됨
     },
-    "[jsonc]": {
+    // 마크다운 린트 적용
+    "[markdown]": {
         "editor.formatOnSave": true,
-        // "editor.defaultFormatter": "vscode.json-language-features"
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.codeActionsOnSave": {
+            "source.fixAll.markdownlint": true
+        }
     },
+    // 기본 VSCode 린트 제외
+    "html.format.enable": false,
+    "json.format.enable": false,
+    "javascript.format.enable": false,
+    "typescript.format.enable": false,
+    "css.format.enable": false,
+    "yaml.format.enable": false,
     "search.exclude": {
         "**/.yarn": true,
         "**/.pnp.*": true
