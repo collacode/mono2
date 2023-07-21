@@ -7,7 +7,7 @@
 ```bash
 nvm use 16
 yarn
-yarn dlx @yarnpkg/sdks vscode 
+yarn dlx @yarnpkg/sdks vscode
 yarn f msw init public # msw 설치
 ```
 
@@ -17,9 +17,9 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ### 1-3. VSCode 확장 설치
 
-- ESLint
-- HeadWind
-- ZipFS
+-   ESLint
+-   HeadWind
+-   ZipFS
 
 ## 2. 실행 (사용 방법)
 
@@ -29,34 +29,34 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ### 2-1. API 서버
 
-- alias: `a` (e.g. `yarn a start`)
-- 개발 서버를 실행하려면 `start`
-- HMR을 적용하려면 `start:dev`
-- 빌드하려면 `build`
-- 테스트하려면 `test`
+-   alias: `a` (e.g. `yarn a start`)
+-   개발 서버를 실행하려면 `start`
+-   HMR을 적용하려면 `start:dev`
+-   빌드하려면 `build`
+-   테스트하려면 `test`
 
 주의: 서버 시작 전에 `API SPEC`을 직접 빌드해야 한다.
 
 ### 2-2. API SPEC
 
-- alias: `as` (e.g. `yarn as dev`)
-- watch 모드로 트랜스파일링하려면 `dev`
-- 한 번만 트랜스파일링하려면 `build`
+-   alias: `as` (e.g. `yarn as dev`)
+-   watch 모드로 트랜스파일링하려면 `dev`
+-   한 번만 트랜스파일링하려면 `build`
 
 ### 2-3. Components
 
-- alias: `c` (e.g. `yarn c dev`)
-- 개발 서버를 실행하려면 `dev`
-- 빌드하려면 `build`
-- 테스트하려면 `test`
-- 스토리북을 키려면 `storybook`
+-   alias: `c` (e.g. `yarn c dev`)
+-   개발 서버를 실행하려면 `dev`
+-   빌드하려면 `build`
+-   테스트하려면 `test`
+-   스토리북을 키려면 `storybook`
 
 ### 2-3. frontend (Next.js 서버)
 
-- alias: `f` (e.g. `yarn f dev`)
-- 개발 서버를 실행하려면 `dev`
-- 빌드하려면 `build`
-- 테스트하려면 `test`
+-   alias: `f` (e.g. `yarn f dev`)
+-   개발 서버를 실행하려면 `dev`
+-   빌드하려면 `build`
+-   테스트하려면 `test`
 
 ## 3. 안내 사항
 

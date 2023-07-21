@@ -1,36 +1,36 @@
 {
-  "name": "berry",
-  "packageManager": "yarn@3.6.1",
-  "type": "module",
-  "private": true,
-  "workspaces": [
-    "./api",
-    "./apispec",
-    "./components",
-    "./frontend"
-  ],
-  "scripts": {
-    "a": "yarn workspace @collacode/api",
-    "as": "yarn workspace @collacode/apispec",
-    "c": "yarn workspace @collacode/components",
-    "f": "yarn workspace @collacode/frontend",
-    "postinstall": "husky install"
-  },
-  "devDependencies": {
-    "@commitlint/cli": "^17.6.6",
-    "@commitlint/config-conventional": "^17.6.6",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.44.0",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-import-resolver-typescript": "^3.5.5",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-unused-imports": "^3.0.0",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "prettier": "^3.0.0",
-    "typescript": "^5.1.3"
-  }
+    "name": "berry",
+    "packageManager": "yarn@3.6.1",
+    "type": "module",
+    "private": true,
+    "workspaces": [
+        "./api",
+        "./apispec",
+        "./components",
+        "./frontend"
+    ],
+    "scripts": {
+        "a": "yarn workspace @collacode/api",
+        "as": "yarn workspace @collacode/apispec",
+        "c": "yarn workspace @collacode/components",
+        "f": "yarn workspace @collacode/frontend",
+        "postinstall": "husky install"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.6.6",
+        "@commitlint/config-conventional": "^17.6.6",
+        "@typescript-eslint/eslint-plugin": "^6.0.0",
+        "@typescript-eslint/parser": "^6.0.0",
+        "eslint": "^8.44.0",
+        "eslint-config-prettier": "^8.8.0",
+        "eslint-import-resolver-typescript": "^3.5.5",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-simple-import-sort": "^10.0.0",
+        "eslint-plugin-unused-imports": "^3.0.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.3",
+        "prettier": "^3.0.0",
+        "typescript": "^5.1.3"
+    }
 }

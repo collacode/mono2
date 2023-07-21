@@ -1,18 +1,15 @@
 {
-  "extends": "../tsconfig.json",
-  "compilerOptions": {
-    "sourceMap": true,
-    "outDir": "./dist",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false,
-  },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-  ]
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+        "sourceMap": true,
+        "outDir": "./dist",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": false,
+        "strictBindCallApply": false,
+        "forceConsistentCasingInFileNames": false,
+        "noFallthroughCasesInSwitch": false
+    },
+    "include": ["**/*.ts", "**/*.tsx"]
 }
