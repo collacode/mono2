@@ -5,12 +5,13 @@
     "main": "dist/index.js",
     "types": "src/index.ts",
     "scripts": {
-        "lint": "eslint --fix .",
+        "lint": "eslint --fix . && prettier --log-level=silent --write .",
         "build": "tsc --outDir dist",
         "dev": "tsc --watch --outDir dist"
     },
     "devDependencies": {
         "eslint": "*",
+        "prettier": "*",
         "typescript": "*"
     }
 }

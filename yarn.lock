@@ -2071,6 +2071,7 @@ __metadata:
     "@types/supertest": ^2.0.12
     eslint: "*"
     jest: ^29.5.0
+    prettier: "*"
     reflect-metadata: ^0.1.13
     run-script-webpack-plugin: ^0.2.0
     rxjs: ^7.8.1
@@ -2094,6 +2095,7 @@ __metadata:
   resolution: "@collacode/apispec@workspace:apispec"
   dependencies:
     eslint: "*"
+    prettier: "*"
     typescript: "*"
   languageName: unknown
   linkType: soft
@@ -2130,6 +2132,7 @@ __metadata:
     jest-environment-jsdom: ^29.6.1
     jsdom: ^22.1.0
     postcss: ^8.4.25
+    prettier: "*"
     prop-types: ^15.8.1
     react: ^18.2.0
     react-dom: ^18.2.0
@@ -2168,6 +2171,7 @@ __metadata:
     next: 13.3.4
     next-transpile-modules: ^10.0.0
     postcss: 8.4.24
+    prettier: "*"
     react: 18.2.0
     react-dom: 18.2.0
     tailwindcss: 3.3.2
@@ -13687,6 +13691,15 @@ __metadata:
   dependencies:
     fast-diff: ^1.1.2
   checksum: 00ce8011cf6430158d27f9c92cfea0a7699405633f7f1d4a45f07e21bf78e99895911cbcdc3853db3a824201a7c745bd49bfea8abd5fb9883e765a90f74f8392
+  languageName: node
+  linkType: hard
+
+"prettier@npm:*":
+  version: 3.0.0
+  resolution: "prettier@npm:3.0.0"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 6a832876a1552dc58330d2467874e5a0b46b9ccbfc5d3531eb69d15684743e7f83dc9fbd202db6270446deba9c82b79d24383d09924c462b457136a759425e33
   languageName: node
   linkType: hard
 

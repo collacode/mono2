@@ -5,3 +5,7 @@
 **/.yarn/*
 **/.storybook/*
 **/.pnp*
+**/*.md
+**/.git*
+**/.prettierignore
+yarn.lock
