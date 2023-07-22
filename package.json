@@ -15,6 +15,7 @@
         "c": "yarn workspace @collacode/components",
         "f": "yarn workspace @collacode/frontend",
         "lint": "yarn workspaces foreach -p run lint",
+        "lint:root": "yarn run eslint --fix './*' && yarn run prettier --write './*'",
         "postinstall": "husky install"
     },
     "devDependencies": {

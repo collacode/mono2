@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint && prettier --log-level=silent --write .",
+        "lint": "next lint && prettier --write .",
         "nextlint": "next lint --fix",
         "test": "vitest --coverage"
     },

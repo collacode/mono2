@@ -71,5 +71,7 @@ module.exports = {
         '**/build/**',
         '**/.yarn/**',
         '.pnp*',
+        '**/*.md',
+        'yarn.lock',
     ],
 };
