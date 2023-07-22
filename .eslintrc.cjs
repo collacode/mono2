@@ -15,7 +15,7 @@ module.exports = {
     ],
     overrides: [
         {
-            files: ['webpack*js'],
+            files: ['*.{js,cjs}'],
             rules: {
                 '@typescript-eslint/no-var-requires': 'off',
             },
@@ -73,5 +73,6 @@ module.exports = {
         '.pnp*',
         '**/*.md',
         'yarn.lock',
+        '!**/*.cjs',
     ],
 };
