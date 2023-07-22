@@ -19,6 +19,7 @@
     "typescript.format.enable": false,
     "css.format.enable": false,
     "yaml.format.enable": false,
+    "prettier.useEditorConfig": false,
     "search.exclude": {
         "**/.yarn": true,
         "**/.pnp.*": true
