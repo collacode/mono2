@@ -2069,6 +2069,7 @@ __metadata:
     "@types/jest": ^29.5.2
     "@types/node": ^20.3.1
     "@types/supertest": ^2.0.12
+    eslint: "*"
     jest: ^29.5.0
     reflect-metadata: ^0.1.13
     run-script-webpack-plugin: ^0.2.0
@@ -2092,6 +2093,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@collacode/apispec@workspace:apispec"
   dependencies:
+    eslint: "*"
     typescript: "*"
   languageName: unknown
   linkType: soft

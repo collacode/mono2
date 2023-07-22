@@ -14,6 +14,7 @@
         "as": "yarn workspace @collacode/apispec",
         "c": "yarn workspace @collacode/components",
         "f": "yarn workspace @collacode/frontend",
+        "lint": "yarn workspaces foreach -p run lint",
         "postinstall": "husky install"
     },
     "devDependencies": {

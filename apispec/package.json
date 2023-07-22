@@ -10,6 +10,7 @@
         "dev": "tsc --watch --outDir dist"
     },
     "devDependencies": {
+        "eslint": "*",
         "typescript": "*"
     }
 }

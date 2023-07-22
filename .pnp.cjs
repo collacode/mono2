@@ -4729,6 +4729,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/jest", "npm:29.5.3"],\
             ["@types/node", "npm:20.4.2"],\
             ["@types/supertest", "npm:2.0.12"],\
+            ["eslint", "npm:8.44.0"],\
             ["jest", "virtual:d8b1ca7e2be7bd53c659bb39442d6404748f6f82476deeda268754adf8fb703a3c45a90a081c3895b7b9e4bd2156def1d627adcea55e66ffbe0e1761ca8381ba#npm:29.6.1"],\
             ["reflect-metadata", "npm:0.1.13"],\
             ["run-script-webpack-plugin", "npm:0.2.0"],\
@@ -4754,6 +4755,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./apispec/",\
           "packageDependencies": [\
             ["@collacode/apispec", "workspace:apispec"],\
+            ["eslint", "npm:8.44.0"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"]\
           ],\
           "linkType": "SOFT"\
