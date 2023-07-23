@@ -1,0 +1,22 @@
+name: Let's Checkout!
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  lintAndTest:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [16.x] # 템플릿 기본값: [10.x, 12.x, 14.x]
+
+    name: Checkout and lint
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - run: yarn install
