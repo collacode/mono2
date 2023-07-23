@@ -21,5 +21,8 @@ jobs:
 
       - run: yarn install
       - run: yarn lint
-      - run: yarn f build
       - run: yarn a build
+      - run: yarn f build
+      - run: yarn a test
+      - run: yarn c test
+      - run: yarn f test
