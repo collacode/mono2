@@ -1,0 +1,13 @@
+**/node_modules/*
+**/dist/*
+**/.next/*
+**/coverage/*
+**/.yarn/*
+**/.storybook/*
+**/.pnp*
+**/*.md
+**/.git*
+yarn.lock
+.prettierignore
+**/*.example
+**/prisma/*
