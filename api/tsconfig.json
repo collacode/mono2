@@ -11,11 +11,14 @@
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false,
         // 시도 중
-        "noEmit": false
+        "noEmit": false,
         // "baseUrl": "../",
         // "paths": {
         //     "@collacode/apispec": ["./apispec/src/index.ts"]
         // }
+        "paths": {
+            "@prisma/*": ["./prisma/generated/*"]
+        }
     },
     "include": ["src/**/*.ts"]
 }
