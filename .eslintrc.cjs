@@ -5,7 +5,14 @@ module.exports = {
         browser: true,
         es2020: true,
     },
-    extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended', 'plugin:import/recommended', 'plugin:import/typescript', 'plugin:prettier/recommended', 'prettier'],
+    extends: [
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
+        'plugin:prettier/recommended',
+        'prettier',
+    ],
     overrides: [
         {
             files: ['*.{js,cjs}'],
@@ -31,7 +38,13 @@ module.exports = {
             node: true,
         },
     },
-    plugins: ['@typescript-eslint', 'import', 'unused-imports', 'simple-import-sort', 'prettier'],
+    plugins: [
+        '@typescript-eslint',
+        'import',
+        'unused-imports',
+        'simple-import-sort',
+        'prettier',
+    ],
     rules: {
         'import/no-cycle': 'error',
         'import/no-unresolved': 'error',
@@ -52,5 +65,15 @@ module.exports = {
         ],
         'prettier/prettier': ['error', { endOfLine: 'auto' }],
     },
-    ignorePatterns: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/.yarn/**', '.pnp*', '**/*.md', '**/*.css', 'yarn.lock', '!**/*.cjs'],
+    ignorePatterns: [
+        '**/node_modules/**',
+        '**/dist/**',
+        '**/build/**',
+        '**/.yarn/**',
+        '.pnp*',
+        '**/*.md',
+        '**/*.css',
+        'yarn.lock',
+        '!**/*.cjs',
+    ],
 };

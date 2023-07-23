@@ -1,4 +1,8 @@
-import { PreferMeetingDays, PreferPositionTypes, PreferProjectTypes } from './Common';
+import {
+    PreferMeetingDays,
+    PreferPositionTypes,
+    PreferProjectTypes,
+} from './Common';
 
 export const MockDeveloperProfile = {
     username: 'seongbin9786',
