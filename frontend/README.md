@@ -1,1 +1,1 @@
-# collacode frontend (Next.js)
+# collacode frontend
