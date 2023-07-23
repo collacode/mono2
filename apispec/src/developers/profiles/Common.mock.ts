@@ -10,7 +10,7 @@ export const MockDeveloperProfile = {
     nickname: 'Seongbin',
     githubUrl: 'https://github.com/seongbin9786',
     blogUrl: 'https://jsqna.com',
-    introText: '프론트엔드 개발자 김성빈입니다.',
+    introText: '프론트엔드 개발자 김성빈입니다~~!!',
     position: PreferPositionTypes.webFrontend,
     techStacks: ['React', 'Redux'],
     preferProjectType: PreferProjectTypes.learning,

@@ -9,7 +9,13 @@
         "noImplicitAny": false,
         "strictBindCallApply": false,
         "forceConsistentCasingInFileNames": false,
-        "noFallthroughCasesInSwitch": false
+        "noFallthroughCasesInSwitch": false,
+        // 시도 중
+        "noEmit": false
+        // "baseUrl": "../",
+        // "paths": {
+        //     "@collacode/apispec": ["./apispec/src/index.ts"]
+        // }
     },
-    "include": ["**/*.ts", "**/*.tsx"]
+    "include": ["src/**/*.ts"]
 }

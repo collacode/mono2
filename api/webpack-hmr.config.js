@@ -5,7 +5,11 @@ module.exports = function (options, webpack) {
     return {
         ...options,
         entry: ['webpack/hot/poll?100', options.entry],
-        externals: [WebpackPnpExternals({ exclude: ['webpack/hot/poll?100'] })],
+        externals: [
+            WebpackPnpExternals({
+                exclude: ['webpack/hot/poll?100', '@collacode/apispec'],
+            }),
+        ],
         plugins: [
             ...options.plugins,
             new webpack.HotModuleReplacementPlugin(),
@@ -18,7 +22,7 @@ module.exports = function (options, webpack) {
             }),
         ],
         resolve: {
-            extensions: ['.ts', '.tsx', '.js'],
+            extensions: ['.js', '.ts', '.tsx'],
         },
         module: {
             rules: [

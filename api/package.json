@@ -42,11 +42,9 @@
         "ts-loader": "^9.4.3",
         "ts-node": "^10.9.1",
         "tsconfig-paths": "^4.2.0",
-        "tsconfig-paths-webpack-plugin": "^4.1.0",
         "typescript": "*",
         "webpack": "^5.88.1",
         "webpack-cli": "^5.1.4",
-        "webpack-node-externals": "^3.0.0",
         "webpack-pnp-externals": "^1.1.0"
     },
     "jest": {

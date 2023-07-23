@@ -4741,11 +4741,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["ts-loader", "virtual:d8b1ca7e2be7bd53c659bb39442d6404748f6f82476deeda268754adf8fb703a3c45a90a081c3895b7b9e4bd2156def1d627adcea55e66ffbe0e1761ca8381ba#npm:9.4.4"],\
             ["ts-node", "virtual:ef6136dc31186c42f92851afb237eadaa9d36085920cabb6ed6ea317680c8271d6b94afcb795fd7e58c08243e470be87ece6bb707daf3ecb0604f7fd8c1aa682#npm:10.9.1"],\
             ["tsconfig-paths", "npm:4.2.0"],\
-            ["tsconfig-paths-webpack-plugin", "npm:4.1.0"],\
             ["typescript", "patch:typescript@npm%3A5.1.6#~builtin<compat/typescript>::version=5.1.6&hash=5da071"],\
             ["webpack", "virtual:d8b1ca7e2be7bd53c659bb39442d6404748f6f82476deeda268754adf8fb703a3c45a90a081c3895b7b9e4bd2156def1d627adcea55e66ffbe0e1761ca8381ba#npm:5.88.1"],\
             ["webpack-cli", "virtual:d8b1ca7e2be7bd53c659bb39442d6404748f6f82476deeda268754adf8fb703a3c45a90a081c3895b7b9e4bd2156def1d627adcea55e66ffbe0e1761ca8381ba#npm:5.1.4"],\
-            ["webpack-node-externals", "npm:3.0.0"],\
             ["webpack-pnp-externals", "npm:1.1.0"]\
           ],\
           "linkType": "SOFT"\
@@ -21785,16 +21783,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/tsconfig-paths-webpack-plugin-npm-4.0.1-80479f0973-a09e765c49.zip/node_modules/tsconfig-paths-webpack-plugin/",\
           "packageDependencies": [\
             ["tsconfig-paths-webpack-plugin", "npm:4.0.1"],\
-            ["chalk", "npm:4.1.2"],\
-            ["enhanced-resolve", "npm:5.15.0"],\
-            ["tsconfig-paths", "npm:4.2.0"]\
-          ],\
-          "linkType": "HARD"\
-        }],\
-        ["npm:4.1.0", {\
-          "packageLocation": "./.yarn/cache/tsconfig-paths-webpack-plugin-npm-4.1.0-5bffe3ebda-f6e9a8a407.zip/node_modules/tsconfig-paths-webpack-plugin/",\
-          "packageDependencies": [\
-            ["tsconfig-paths-webpack-plugin", "npm:4.1.0"],\
             ["chalk", "npm:4.1.2"],\
             ["enhanced-resolve", "npm:5.15.0"],\
             ["tsconfig-paths", "npm:4.2.0"]\
