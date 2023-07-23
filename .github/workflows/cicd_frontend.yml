@@ -1,0 +1,25 @@
+name: CI/CD for frontend
+
+on:
+  push:
+    branches: [main]
+    paths: 'frontend/**'
+
+jobs:
+  CI:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }} 
+
+      - run: yarn install
+      - run: yarn f lint
+      - run: yarn f test
+      - run: yarn f build

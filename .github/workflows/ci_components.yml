@@ -1,0 +1,24 @@
+name: CI for components
+
+on:
+  push:
+    branches: [main]
+    paths: 'components/**'
+
+jobs:
+  CI:
+    runs-on: ubuntu-22.04
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }} 
+
+      - run: yarn install
+      - run: yarn c lint
+      - run: yarn c test
