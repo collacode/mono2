@@ -5,5 +5,5 @@ module.exports = {
     tabWidth: 4,
     useTabs: false,
     trailingComma: 'all',
-    printWidth: 80,
+    printWidth: 9999,
 };

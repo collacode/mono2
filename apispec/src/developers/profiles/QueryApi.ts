@@ -1,8 +1,4 @@
-import {
-    PreferMeetingDays,
-    PreferPositionTypes,
-    PreferProjectTypes,
-} from './Common';
+import { PreferMeetingDays, PreferPositionTypes, PreferProjectTypes } from './Common';
 
 // 일단은 해당 타입이 있을지 모르겠음.
 export type UTCDateTime = string;

@@ -1,9 +1,5 @@
 import { LoginApiResponse } from '../../auth/LoginApi';
-import {
-    PreferMeetingDays,
-    PreferPositionTypes,
-    PreferProjectTypes,
-} from './Common';
+import { PreferMeetingDays, PreferPositionTypes, PreferProjectTypes } from './Common';
 import { DeveloperProfileGetApiResponse } from './QueryApi';
 
 export interface DeveloperProfileCreateApiRequest {

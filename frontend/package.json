@@ -6,7 +6,7 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint && prettier --write .",
+        "lint": "prettier ./src/pages/Home.module.css --write",
         "nextlint": "next lint --fix",
         "test": "vitest --coverage"
     },
