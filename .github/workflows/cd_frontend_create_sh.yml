@@ -5,6 +5,9 @@ name: Create Shell Script
 on:
     workflow_dispatch:
 
+env:
+    SH_SCRIPT_FILE_NAME: test_deploy_frontend.sh
+
 jobs:
     CD:
         # CI 가 실패해도 completed여서, success 체크를 해줘야 함
@@ -71,7 +74,7 @@ jobs:
                   username: ${{ secrets.DEV_SERVER_USERNAME }}
                   key: ${{ secrets.DEV_SERVER_KEY }}
                   port: ${{ secrets.DEV_SERVER_PORT }}
-                  source: deply_frontend.sh
+                  source: $SH_SCRIPT_FILE_NAME
                   target: /home/${{ secrets.DEV_SERVER_USERNAME }}/
                   overwrite: true
 
@@ -86,8 +89,7 @@ jobs:
                   script: |
                       # 스크립트 파일 생성 및 작성 시작
                       cd ~
-                      SCRIPT=deploy_frontend.sh
 
-                      chmod 700 $SCRIPT
-                      cat $SCRIPT
-                  #   $SCRIPT
+                      chmod 700 $SH_SCRIPT_FILE_NAME
+                      cat $SH_SCRIPT_FILE_NAME
+                  #   $SH_SCRIPT_FILE_NAME
