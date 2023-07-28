@@ -1,0 +1,27 @@
+ready - started server on 0.0.0.0:3000, url: http://localhost:3000
+{
+  username: 'seongbin9786',
+  avatarUrl: 'https://avatars.githubusercontent.com/u/28754907?v=4',
+  nickname: 'Seongbin',
+  githubUrl: 'https://github.com/seongbin9786',
+  blogUrl: 'https://jsqna.com',
+  introText: '프론트엔드 개발자 김성빈입니다~~!!',
+  position: 'webFrontend',
+  techStacks: [ 'React', 'Redux' ],
+  preferProjectType: 'learning',
+  preferMeetingDay: 'workdays',
+  employed: false,
+  yearsOfWorkExperiences: 0,
+  gitHubProjects: [
+    {
+      repoName: 'js-algorithm-practice',
+      repoUrl: 'https://github.com/seongbin9786/js-algorithm-practice',
+      projectUrl: 'https://collacode/js-algorithm-practice',
+      description: 'JS로 푸는 알고리즘 (프로젝트)',
+      startedAt: '2023-07-05T00:00:00+09:00',
+      endedAt: '2023-07-05T00:00:00+09:00',
+      techStacks: [Array]
+    }
+  ],
+  gitHubTechUsages: { webFrontend: [ [Object] ], appFrontend: [], backend: [ [Object] ] }
+}

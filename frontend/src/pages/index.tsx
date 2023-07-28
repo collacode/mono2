@@ -1,4 +1,5 @@
 import { DeveloperProfileGetApiResponse } from '@collacode/apispec';
+import * as Sentry from '@sentry/nextjs';
 
 interface HomeProps {
     profile: DeveloperProfileGetApiResponse;
@@ -6,6 +7,7 @@ interface HomeProps {
 
 export default function Home({ profile }: HomeProps) {
     console.log(profile);
+    Sentry.captureMessage('user visited Home');
 
     return (
         <main className="w-screen h-screen">

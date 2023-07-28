@@ -12,6 +12,7 @@
     },
     "dependencies": {
         "@collacode/apispec": "workspace:*",
+        "@sentry/nextjs": "7.17.3",
         "@types/node": "20.3.3",
         "@types/react": "18.2.14",
         "@types/react-dom": "18.2.6",
@@ -40,6 +41,7 @@
         "jsdom": "^22.1.0",
         "msw": "^1.2.2",
         "prettier": "*",
+        "rollup-plugin-pnp-resolve": "^2.0.0",
         "vite-tsconfig-paths": "^4.2.0",
         "vitest": "^0.33.0"
     },
