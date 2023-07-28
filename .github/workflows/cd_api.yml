@@ -61,7 +61,6 @@ jobs:
                       export DATABASE_URL=${{ secrets.DATABASE_URL }}
 
                       ## 설치 및 빌드
-                      ll
                       yarn
                       yarn a prisma:pull
                       yarn a prisma:migrate
