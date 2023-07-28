@@ -38,8 +38,8 @@ jobs:
                       rm -f ./deploy_frontend.sh
 
                       # 스크립트 생성 시작
-                      SCRIPT="$(pwd)/deploy_frontend.sh"
-                      touch ./deploy_frontend.sh
+                      SCRIPT="$(eval echo ~$USER)/deploy_frontend.sh"
+                      touch $SCRIPT
 
                       # nvm PATH 설정
                       echo "export NVM_DIR=~/.nvm" >> $SCRIPT
@@ -48,12 +48,12 @@ jobs:
                       echo "nvm install 16" >> $SCRIPT
                       echo "nvm use 16" >> $SCRIPT
 
-                      echo "cd ~" >> $SCRIPT
+                      echo "cd $(eval echo ~$USER)" >> $SCRIPT
 
                       # 최초 여부에 따라 분기
                       # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
-                      echo "DIR=\"~/${{ github.repository }}\"" >> $SCRIPT
-                      echo "if [ -d \"$DIR\" ]; then" >> $SCRIPT
+                      echo "DIR=\"$(eval echo ~$USER)/${{ github.repository }}\"" >> $SCRIPT
+                      echo 'if [ -d "$DIR" ]; then' >> $SCRIPT
 
                         # nohup으로 실행한 프로세스를 종료하기
                         # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
@@ -78,7 +78,7 @@ jobs:
 
                         echo "fi" >> $SCRIPT
 
-                      echo "cd $DIR" >> $SCRIPT
+                      echo 'cd $DIR' >> $SCRIPT
                       echo "yarn" >> $SCRIPT
                       echo "yarn f build" >> $SCRIPT
 
@@ -87,6 +87,6 @@ jobs:
                       echo "rm -f nohup.out" >> $SCRIPT
                       echo "nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid" >> $SCRIPT
 
-                      chmod 700 ./deploy_frontend.sh
-                      cat ./deploy_frontend.sh
-                      ./deploy_frontend.sh
+                      chmod 700 $SCRIPT
+                      cat $SCRIPT
+                      $SCRIPT
