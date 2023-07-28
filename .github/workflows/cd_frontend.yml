@@ -67,8 +67,8 @@ jobs:
                         echo "fi" >> $SCRIPT
 
                       # 환경 변수 파일 생성
-                      echo "NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }}" > ./frontend/.env.production
-                      echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> ./frontend/.env.production
+                      echo "echo NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }} > ./frontend/.env.production" >> $SCRIPT
+                      echo "echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> ./frontend/.env.production" >> $SCRIPT
 
                       ## 설치 및 빌드
                       echo "yarn" >> $SCRIPT
@@ -77,7 +77,7 @@ jobs:
                       echo "yarn f build" >> $SCRIPT
 
                       # 실행
-                      echo 'nohup yarn f start >> ../../next.log 2>&1 & echo $! > ../../program.pid' >> $SCRIPT
+                      echo 'nohup yarn f start >> ../next.log 2>&1 & echo $! > ../program.pid' >> $SCRIPT
                       echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
