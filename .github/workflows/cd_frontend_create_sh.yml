@@ -22,7 +22,7 @@ jobs:
             - name: 설치 스크립트 생성
               uses: DamianReeves/write-file-action@master
               with:
-                  path: deply_frontend.sh
+                  path: $SH_SCRIPT_FILE_NAME
                   write-mode: overwrite
                   contents: |
                       # nvm PATH 설정
@@ -61,7 +61,7 @@ jobs:
                       yarn
                       yarn f run msw init public
                       yarn f run next telemetry disable
-                      yarn f build" >> $SCRIPT
+                      yarn f build
 
                       # 실행
                       PORT=${{ vars.NEXT_PORT }} nohup yarn f start >> ../next.log 2>&1 &
