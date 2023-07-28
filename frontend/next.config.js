@@ -51,6 +51,4 @@ const config = withSentryConfig(
     },
 );
 
-fs.writeFileSync('./next-sentry-webpack-config-3.js', nextConfig.toString());
-
 module.exports = config;
