@@ -77,7 +77,7 @@ jobs:
                       echo "yarn f build" >> $SCRIPT
 
                       # 실행
-                      echo 'nohup PORT=${{ vars.NEXT_PORT }} yarn f start >> ../next.log 2>&1 &' >> $SCRIPT
+                      echo 'PORT=${{ vars.NEXT_PORT }} nohup yarn f start >> ../next.log 2>&1 &' >> $SCRIPT
                       echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
