@@ -74,17 +74,17 @@ jobs:
                         echo "else" >> $SCRIPT
                         echo "echo Newly Cloning." >> $SCRIPT
                         echo "git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git" >> $SCRIPT
-
+                        echo 'cd $DIR' >> $SCRIPT
                         echo "fi" >> $SCRIPT
 
-                      echo 'cd $DIR' >> $SCRIPT
                       echo "yarn" >> $SCRIPT
                       echo "yarn f build" >> $SCRIPT
 
                       # nohup으로 실행해 종료되지 않게
                       # https://stackoverflow.com/a/11856575
                       echo "rm -f nohup.out" >> $SCRIPT
-                      echo "nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid" >> $SCRIPT
+                      echo 'nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid' >> $SCRIPT
+                      echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
                       cat $SCRIPT
