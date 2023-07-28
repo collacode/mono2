@@ -38,7 +38,7 @@ jobs:
                       cd $(eval echo ~$USER)
 
                       # 최초 여부에 따라 분기
-                      DIR=\"$(eval echo ~$USER)/${{ github.event.repository.name }}\"
+                      DIR=$(eval echo ~$USER)/${{ github.event.repository.name }}
 
                       # 폴더가 있으면 pull
                       if [ -d "$DIR" ]; then

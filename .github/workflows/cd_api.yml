@@ -37,7 +37,7 @@ jobs:
                       cd $(eval echo ~$USER)
 
                       # 최초 여부에 따라 분기
-                      DIR=\"$(eval echo ~$USER)/${{ github.event.repository.name }}\"
+                      DIR=$(eval echo ~$USER)/${{ github.event.repository.name }}
 
                       # 폴더가 있으면 pull
                       if [ -d "$DIR" ]; then
@@ -58,11 +58,10 @@ jobs:
                       fi
 
                       # 환경 변수 설정
-                      pwd
                       export DATABASE_URL=${{ secrets.DATABASE_URL }}
 
                       ## 설치 및 빌드
-                      pwd
+                      ll
                       yarn
                       yarn a prisma:pull
                       yarn a prisma:migrate
