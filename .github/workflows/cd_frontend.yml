@@ -38,7 +38,7 @@ jobs:
                       rm -f ./deploy_frontend.sh
 
                       # 스크립트 생성 시작
-                      SCRIPT="~/deploy_frontend.sh"
+                      SCRIPT="$(pwd)/deploy_frontend.sh"
                       touch ./deploy_frontend.sh
 
                       # nvm PATH 설정
