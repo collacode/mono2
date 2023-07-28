@@ -22,7 +22,7 @@ jobs:
             - name: 설치 스크립트 생성
               uses: DamianReeves/write-file-action@master
               with:
-                  path: $SH_SCRIPT_FILE_NAME
+                  path: ${{ env.SH_SCRIPT_FILE_NAME }}
                   write-mode: overwrite
                   contents: |
                       # nvm PATH 설정
@@ -74,7 +74,7 @@ jobs:
                   username: ${{ secrets.DEV_SERVER_USERNAME }}
                   key: ${{ secrets.DEV_SERVER_KEY }}
                   port: ${{ secrets.DEV_SERVER_PORT }}
-                  source: $SH_SCRIPT_FILE_NAME
+                  source: ${{ env.SH_SCRIPT_FILE_NAME }}
                   target: /home/${{ secrets.DEV_SERVER_USERNAME }}/
                   overwrite: true
 
@@ -92,4 +92,4 @@ jobs:
 
                       chmod 700 ${{ env.SH_SCRIPT_FILE_NAME }}
                       cat ${{ env.SH_SCRIPT_FILE_NAME }}
-                  #   $SH_SCRIPT_FILE_NAME
+                      # ${{ env.SH_SCRIPT_FILE_NAME }}
