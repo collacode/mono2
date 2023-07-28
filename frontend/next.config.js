@@ -13,7 +13,6 @@ module.exports = nextConfig;
 // Injected content via Sentry wizard below
 
 const { withSentryConfig } = require('@sentry/nextjs');
-const fs = require('fs');
 
 const config = withSentryConfig(
     module.exports,
