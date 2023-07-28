@@ -38,7 +38,8 @@ jobs:
                       source ~/.nvm/nvm.sh
 
                       # Node 16만 가능한 환경
-                      nvm install 16
+                      # 이미 설치된 경우 error를 반환하므로 true 설정
+                      nvm install 16 || true
                       nvm use 16
 
                       cd /
