@@ -46,7 +46,9 @@ const config = withSentryConfig(
         disableLogger: true,
 
         // lint를 거치고 build가 되기 때문에 긴 lint를 다시 수행할 필요가 없다.
-        ignoreDuringBuilds: true,
+        eslint: {
+            ignoreDuringBuilds: true,
+        },
     },
 );
 
