@@ -6,7 +6,7 @@ declare const module: any;
 
 async function bootstrap() {
     const app = await NestFactory.create(AppModule);
-    await app.listen(3000);
+    await app.listen(process.env.PORT || 8080);
 
     if (module.hot) {
         console.log('[HMR] Re-loaded');
