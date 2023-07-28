@@ -1,4 +1,4 @@
-name: CI/CD for api
+name: CI for api
 
 on:
     push:
@@ -19,8 +19,10 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
 
+            - run: export DATABASE_URL=${{ secrets.DATABASE_URL }}
             - run: yarn install
             - run: yarn a lint
-            - run: yarn a pnpify prisma generate
+            - run: yarn a prisma:format
+            - run: yarn a prisma:migrate
             - run: yarn a test
             - run: yarn a build

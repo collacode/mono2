@@ -14,7 +14,12 @@
         "test:watch": "jest --watch",
         "test:cov": "jest --coverage",
         "test:debug": "node -r tsconfig-paths/register -r ts-node/register dist/main.js",
-        "test:e2e": "jest --config ./test/jest-e2e.json"
+        "test:e2e": "jest --config ./test/jest-e2e.json",
+        "prisma:migrate": "yarn pnpify prisma migrate dev --name init --skip-generate",
+        "prisma:generate": "yarn pnpify prisma generate",
+        "prisma:format": "prisma format",
+        "prisma:init": "prisma init --datasource-provider mysql",
+        "prisma:pull": "yarn pnpify prisma db pull"
     },
     "dependencies": {
         "@collacode/apispec": "workspace:*",

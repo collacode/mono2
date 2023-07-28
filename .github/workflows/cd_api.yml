@@ -1,0 +1,96 @@
+# 미리 DB init을 해놓는다.
+name: CD for API
+
+on:
+    workflow_dispatch:
+    push:
+        branches:
+            - main
+        paths:
+            - api/**
+
+env:
+    SH_SCRIPT_FILE_NAME: deploy_api.sh
+
+jobs:
+    CD:
+        # CI 가 실패해도 completed여서, success 체크를 해줘야 함
+        # https://stackoverflow.com/a/64733705
+        runs-on: ubuntu-22.04
+
+        strategy:
+            matrix:
+                node-version: [16.x]
+
+        steps:
+            - name: 배포 스크립트 생성
+              uses: DamianReeves/write-file-action@master
+              with:
+                  path: ${{ env.SH_SCRIPT_FILE_NAME }}
+                  write-mode: overwrite
+                  contents: |
+                      # nvm PATH 설정
+                      export NVM_DIR=~/.nvm
+                      source ~/.nvm/nvm.sh
+
+                      # 폴더 이동
+                      cd $(eval echo ~$USER)
+
+                      # 최초 여부에 따라 분기
+                      DIR=\"$(eval echo ~$USER)/${{ github.event.repository.name }}\"
+
+                      # 폴더가 있으면 pull
+                      if [ -d "$DIR" ]; then
+                          echo Already Cloned.
+                          cd $DIR
+
+                          # nohup으로 실행한 프로세스를 종료하기
+                          kill -15 $(lsof -t -i:${{ vars.API_PORT }}) || true
+
+                          # 항상 main 브랜치만 가져옴
+                          git pull origin main
+
+                      # 폴더가 없으면 clone
+                      else
+                          echo Newly Cloning.
+                          git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git
+                          cd $DIR
+                      fi
+
+                      # 환경 변수 설정
+                      export DATABASE_URL=${{ secrets.DATABASE_URL }}
+
+                      ## 설치 및 빌드
+                      yarn
+                      yarn a prisma:pull
+                      yarn a prisma:migrate
+                      yarn a build
+
+                      # 실행
+                      PORT=${{ vars.API_PORT }} nohup yarn a start:prod >> ../api.log 2>&1 &
+                      echo server started
+
+            - name: 배포 스크립트 전송
+              uses: appleboy/scp-action@v0.1.4
+              with:
+                  host: ${{ secrets.DEV_SERVER_HOST }}
+                  username: ${{ secrets.DEV_SERVER_USERNAME }}
+                  key: ${{ secrets.DEV_SERVER_KEY }}
+                  port: ${{ secrets.DEV_SERVER_PORT }}
+                  source: ${{ env.SH_SCRIPT_FILE_NAME }}
+                  target: /home/${{ secrets.DEV_SERVER_USERNAME }}/
+                  overwrite: true
+
+            - name: 배포 스크립트 실행
+              uses: appleboy/ssh-action@v1.0.0
+              with:
+                  host: ${{ secrets.DEV_SERVER_HOST }}
+                  username: ${{ secrets.DEV_SERVER_USERNAME }}
+                  key: ${{ secrets.DEV_SERVER_KEY }}
+                  port: ${{ secrets.DEV_SERVER_PORT }}
+                  script_stop: true
+                  script: |
+                      cd ~
+                      chmod 700 ${{ env.SH_SCRIPT_FILE_NAME }}
+                      cat ${{ env.SH_SCRIPT_FILE_NAME }}
+                      ./${{ env.SH_SCRIPT_FILE_NAME }}
