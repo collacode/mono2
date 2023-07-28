@@ -35,11 +35,8 @@ jobs:
                   envs: NEXT_PUBLIC_API_MOCKING, SENTRY_AUTH_TOKEN
                   script_stop: true
                   script: |
-                      # 스크립트 생성 시작
-                      # rm -f ./deploy_frontend.sh
                       read -d '' deploy_frontend_script_env << EOF
 
-                      # nvm PATH 설정
                       export NVM_DIR=~/.nvm
                       source ~/.nvm/nvm.sh
 
@@ -48,9 +45,6 @@ jobs:
 
                       cd ~
                       EOF
-                      echo "$deploy_frontend_script_env" > ./deploy_frontend.sh
-                      chmod 700 ./deploy_frontend.sh
-                      ./deploy_frontend.sh
 
                   #   # 최초 여부에 따라 분기
                   #   # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
