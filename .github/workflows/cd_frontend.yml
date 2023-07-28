@@ -23,18 +23,18 @@ jobs:
         steps:
             - name: Node.js 배포
               uses: appleboy/ssh-action@v1.0.0
-              env:
-                  NEXT_PUBLIC_API_MOCKING: true,
-                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
               with:
                   host: ${{ secrets.DEV_SERVER_HOST }}
                   username: ${{ secrets.DEV_SERVER_USERNAME }}
                   key: ${{ secrets.DEV_SERVER_KEY }}
                   port: ${{ secrets.DEV_SERVER_PORT }}
-                  envs: NEXT_PUBLIC_API_MOCKING, SENTRY_AUTH_TOKEN
                   script_stop: true
                   script: |
                       rm -f ./deploy_frontend.sh
+
+                      # 환경 변수 설정 시작
+                      $NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }}
+                      $SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 
                       # 스크립트 생성 시작
                       SCRIPT="$(eval echo ~$USER)/deploy_frontend.sh"
@@ -77,7 +77,9 @@ jobs:
                         echo 'cd $DIR' >> $SCRIPT
                         echo "fi" >> $SCRIPT
 
+                      ## 설치 및 빌드
                       echo "yarn" >> $SCRIPT
+                      echo "yarn f run msw init public" >> $SCRIPT
                       echo "yarn f build" >> $SCRIPT
 
                       # nohup으로 실행해 종료되지 않게
