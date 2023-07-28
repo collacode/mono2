@@ -53,6 +53,8 @@ jobs:
 
                         echo "echo Already Cloned." >> $SCRIPT
 
+                        echo 'cd $DIR' >> $SCRIPT
+
                         # nohup으로 실행한 프로세스를 종료하기
                         # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
                         echo "kill -9 `cat program.pid` || true" >> $SCRIPT
