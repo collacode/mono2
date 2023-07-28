@@ -32,11 +32,11 @@ jobs:
                   script: |
                       rm -f ./deploy_frontend.sh
 
-                      # 환경 변수 설정 시작
+                      # 환경 변수 설정
                       NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }}
                       SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
 
-                      # 스크립트 생성 시작
+                      # 스크립트 파일 생성 및 작성 시작
                       SCRIPT="$(eval echo ~$USER)/deploy_frontend.sh"
                       touch $SCRIPT
 
@@ -44,11 +44,13 @@ jobs:
                       echo "export NVM_DIR=~/.nvm" >> $SCRIPT
                       echo "source ~/.nvm/nvm.sh" >> $SCRIPT
 
+                      # 폴더 이동
                       echo "cd $(eval echo ~$USER)" >> $SCRIPT
 
                       # 최초 여부에 따라 분기
-                      # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
                       echo "DIR=\"$(eval echo ~$USER)/${{ github.event.repository.name }}\"" >> $SCRIPT
+
+                      # 폴더가 있으면 pull
                       echo 'if [ -d "$DIR" ]; then' >> $SCRIPT
 
                         echo "echo Already Cloned." >> $SCRIPT
@@ -56,12 +58,12 @@ jobs:
                         echo 'cd $DIR' >> $SCRIPT
 
                         # nohup으로 실행한 프로세스를 종료하기
-                        # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
                         echo "kill -15 `cat $DIR/frontend/program.pid` || true" >> $SCRIPT
 
                         # 항상 main 브랜치만 가져옴
                         echo "git pull origin main" >> $SCRIPT
 
+                        # 폴더가 없으면 clone
                         echo "else" >> $SCRIPT
                         echo "echo Newly Cloning." >> $SCRIPT
                         echo "git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git" >> $SCRIPT
@@ -71,12 +73,11 @@ jobs:
                       ## 설치 및 빌드
                       echo "yarn" >> $SCRIPT
                       echo "yarn f run msw init public" >> $SCRIPT
+                      echo "yarn f run next telemetry disable" >> $SCRIPT
                       echo "yarn f build" >> $SCRIPT
 
-                      # nohup으로 실행해 종료되지 않게
-                      # https://stackoverflow.com/a/11856575
-                      echo "rm -f server.log" >> $SCRIPT
-                      echo 'nohup yarn f start > server.log 2>&1 & echo $! > program.pid' >> $SCRIPT
+                      # 실행
+                      echo 'nohup yarn f start > ../../next.log 2>&1 & echo $! > ../../program.pid' >> $SCRIPT
                       echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
