@@ -90,6 +90,6 @@ jobs:
                       # 스크립트 파일 생성 및 작성 시작
                       cd ~
 
-                      chmod 700 $SH_SCRIPT_FILE_NAME
-                      cat $SH_SCRIPT_FILE_NAME
+                      chmod 700 ${{ env.SH_SCRIPT_FILE_NAME }}
+                      cat ${{ env.SH_SCRIPT_FILE_NAME }}
                   #   $SH_SCRIPT_FILE_NAME
