@@ -32,10 +32,6 @@ jobs:
                   script: |
                       rm -f ./deploy_frontend.sh
 
-                      # 환경 변수 설정
-                      NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }}
-                      SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
-
                       # 스크립트 파일 생성 및 작성 시작
                       SCRIPT="$(eval echo ~$USER)/deploy_frontend.sh"
                       touch $SCRIPT
@@ -70,6 +66,10 @@ jobs:
                         echo 'cd $DIR' >> $SCRIPT
                         echo "fi" >> $SCRIPT
 
+                      # 환경 변수 파일 생성
+                      echo "NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }}" > ./frontend/.env.production
+                      echo "SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}" >> ./frontend/.env.production
+
                       ## 설치 및 빌드
                       echo "yarn" >> $SCRIPT
                       echo "yarn f run msw init public" >> $SCRIPT
@@ -77,7 +77,7 @@ jobs:
                       echo "yarn f build" >> $SCRIPT
 
                       # 실행
-                      echo 'nohup yarn f start > ../../next.log 2>&1 & echo $! > ../../program.pid' >> $SCRIPT
+                      echo 'nohup yarn f start >> ../../next.log 2>&1 & echo $! > ../../program.pid' >> $SCRIPT
                       echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
