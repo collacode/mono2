@@ -36,7 +36,7 @@ jobs:
                   script_stop: true
                   script: |
                       # 스크립트 생성 시작
-                      rm ./deploy_frontend.sh
+                      rm -f ./deploy_frontend.sh
                       read -d '' deploy_frontend_script_env << EOF
 
                       # nvm PATH 설정
