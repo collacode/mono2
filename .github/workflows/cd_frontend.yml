@@ -35,17 +35,16 @@ jobs:
                   envs: NEXT_PUBLIC_API_MOCKING, SENTRY_AUTH_TOKEN
                   script_stop: true
                   script: |
-                      echo "hi"
-                      #   read -d '' deploy_frontend_script_env << EOF
+                      read -d '' deploy_frontend_script_env << EOF
+                      EOF
 
-                      #   export NVM_DIR=~/.nvm
-                      #   source ~/.nvm/nvm.sh
+                  #   export NVM_DIR=~/.nvm
+                  #   source ~/.nvm/nvm.sh
 
-                      #   nvm install 16
-                      #   nvm use 16
+                  #   nvm install 16
+                  #   nvm use 16
 
-                      #   cd ~
-                      #   EOF
+                  #   cd ~
 
                   #   # 최초 여부에 따라 분기
                   #   # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
