@@ -6,7 +6,7 @@ on:
     workflow_dispatch:
 
 env:
-    SH_SCRIPT_FILE_NAME: test_deploy_frontend.sh
+    SH_SCRIPT_FILE_NAME: deploy_frontend.sh
 
 jobs:
     CD:
@@ -92,4 +92,4 @@ jobs:
 
                       chmod 700 ${{ env.SH_SCRIPT_FILE_NAME }}
                       cat ${{ env.SH_SCRIPT_FILE_NAME }}
-                      # ${{ env.SH_SCRIPT_FILE_NAME }}
+                      ./${{ env.SH_SCRIPT_FILE_NAME }}
