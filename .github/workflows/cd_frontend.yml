@@ -35,55 +35,58 @@ jobs:
                   envs: NEXT_PUBLIC_API_MOCKING, SENTRY_AUTH_TOKEN
                   script_stop: true
                   script: |
-                      read -d '' deploy_frontend_script_env << EOF
-                      EOF
+                      rm -f ./deploy_frontend.sh
 
-                  #   export NVM_DIR=~/.nvm
-                  #   source ~/.nvm/nvm.sh
+                      # 스크립트 생성 시작
+                      SCRIPT="~/deploy_frontend.sh"
+                      touch ./deploy_frontend.sh
 
-                  #   nvm install 16
-                  #   nvm use 16
+                      # nvm PATH 설정
+                      echo "export NVM_DIR=~/.nvm" >> SCRIPT
+                      echo "source ~/.nvm/nvm.sh" >> SCRIPT
 
-                  #   cd ~
+                      echo "nvm install 16" >> SCRIPT
+                      echo "nvm use 16" >> SCRIPT
 
-                  #   # 최초 여부에 따라 분기
-                  #   # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
-                  #   DIR="~/mono2"
-                  #   if [ -d "$DIR" ]; then
+                      echo "cd ~" >> SCRIPT
 
-                  #     # nohup으로 실행한 프로세스를 종료하기
-                  #     # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
-                  #     kill -9 `cat program.pid` || true
+                      # 최초 여부에 따라 분기
+                      # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
+                      echo "DIR=\"~/${{ github.repository }}\"" >> SCRIPT
+                      echo "if [ -d \"$DIR\" ]; then" >> SCRIPT
 
-                  #     # git fetch -all 과 동일
-                  #     git remote update
+                        # nohup으로 실행한 프로세스를 종료하기
+                        # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
+                        echo "kill -9 `cat program.pid` || true" >> SCRIPT
 
-                  #     # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
-                  #     git checkout main
-                  #     git branch -d ${{ github.head_ref || github.ref_name }} || true
+                        # git fetch -all 과 동일
+                        echo "git remote update" >> SCRIPT
 
-                  #     # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
-                  #     git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}
+                        # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
+                        echo "git checkout main" >> SCRIPT
+                        echo "git branch -d ${{ github.head_ref || github.ref_name }} || true" >> SCRIPT
 
-                  #     git pull
+                        # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
+                        echo "git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}" >> SCRIPT
+                        
+                        echo "git pull" >> SCRIPT
 
-                  #   else
+                        echo "else" >> SCRIPT
 
-                  #     npm install -g yarn
-                  #     git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git
+                        echo "npm install -g yarn" >> SCRIPT
+                        echo "git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git" >> SCRIPT
 
-                  #   fi
+                        echo "fi" >> SCRIPT
 
-                  #   cd $DIR
-                  #   yarn
-                  #   yarn f build
+                      cd $DIR" >> SCRIPT
+                      echo "yarn" >> SCRIPT
+                      echo "yarn f build" >> SCRIPT
 
-                  #   # nohup으로 실행해 종료되지 않게
-                  #   # https://stackoverflow.com/a/11856575
-                  #   rm nohup.out
-                  #   nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid
+                      # nohup으로 실행해 종료되지 않게
+                      # https://stackoverflow.com/a/11856575
+                      echo "rm -f nohup.out" >> SCRIPT
+                      echo "nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid" >> SCRIPT
 
-                  # EOF
-                  #   echo "$deploy_frontend_script_env" > ./deploy_frontend.sh
-                  #   chmod 700 ./deploy_frontend.sh
-                  #   ./deploy_frontend.sh
+                      chmod 700 ./deploy_frontend.sh
+                      cat ./deploy_frontend.sh
+                      ./deploy_frontend.sh
