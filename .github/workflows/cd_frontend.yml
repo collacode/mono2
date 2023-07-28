@@ -59,17 +59,8 @@ jobs:
                         # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
                         echo "kill -15 `cat $DIR/frontend/program.pid` || true" >> $SCRIPT
 
-                        # git fetch -all 과 동일
-                        echo "git remote update" >> $SCRIPT
-
-                        # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
-                        echo "git checkout main" >> $SCRIPT
-                        echo "git branch -d ${{ github.head_ref || github.ref_name }} || true" >> $SCRIPT
-
-                        # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
-                        echo "git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}" >> $SCRIPT
-                        
-                        echo "git pull" >> $SCRIPT
+                        # 항상 main 브랜치만 가져옴
+                        echo "git pull origin main" >> $SCRIPT
 
                         echo "else" >> $SCRIPT
                         echo "echo Newly Cloning." >> $SCRIPT
