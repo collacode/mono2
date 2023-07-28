@@ -54,7 +54,7 @@ jobs:
                         echo 'cd $DIR' >> $SCRIPT
 
                         # nohup으로 실행한 프로세스를 종료하기
-                        echo "kill -15 `cat $DIR/frontend/program.pid` || true" >> $SCRIPT
+                        echo "kill -15 $(lsof -t -i:80) || true" >> $SCRIPT
 
                         # 항상 main 브랜치만 가져옴
                         echo "git pull origin main" >> $SCRIPT
@@ -67,6 +67,7 @@ jobs:
                         echo "fi" >> $SCRIPT
 
                       # 환경 변수 파일 생성
+                      echo "echo PORT=80 > ./frontend/.env.production" >> $SCRIPT
                       echo "echo NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }} > ./frontend/.env.production" >> $SCRIPT
                       echo "echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> ./frontend/.env.production" >> $SCRIPT
 
@@ -77,7 +78,7 @@ jobs:
                       echo "yarn f build" >> $SCRIPT
 
                       # 실행
-                      echo 'nohup yarn f start >> ../next.log 2>&1 & echo $! > ../program.pid' >> $SCRIPT
+                      echo 'nohup yarn f start >> ../next.log 2>&1 &' >> $SCRIPT
                       echo "echo server started" >> $SCRIPT
 
                       chmod 700 $SCRIPT
