@@ -78,7 +78,7 @@ jobs:
 
                         echo "fi" >> SCRIPT
 
-                      cd $DIR" >> SCRIPT
+                      echo "cd $DIR" >> SCRIPT
                       echo "yarn" >> SCRIPT
                       echo "yarn f build" >> SCRIPT
 
