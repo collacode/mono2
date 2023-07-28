@@ -36,7 +36,7 @@ jobs:
                   script_stop: true
                   script: |
                       # 스크립트 생성 시작
-                      rm -f ./deploy_frontend.sh
+                      # rm -f ./deploy_frontend.sh
                       read -d '' deploy_frontend_script_env << EOF
 
                       # nvm PATH 설정
@@ -47,45 +47,49 @@ jobs:
                       nvm use 16
 
                       cd ~
-
-                      # 최초 여부에 따라 분기
-                      # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
-                      DIR="~/mono2"
-                      if [ -d "$DIR" ]; then
-
-                        # nohup으로 실행한 프로세스를 종료하기
-                        # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
-                        kill -9 `cat program.pid` || true
-
-                        # git fetch -all 과 동일
-                        git remote update
-
-                        # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
-                        git checkout main
-                        git branch -d ${{ github.head_ref || github.ref_name }} || true
-
-                        # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
-                        git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}
-                        
-                        git pull
-
-                      else
-
-                        npm install -g yarn
-                        git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git
-
-                      fi
-
-                      cd $DIR
-                      yarn
-                      yarn f build
-
-                      # nohup으로 실행해 종료되지 않게
-                      # https://stackoverflow.com/a/11856575
-                      rm nohup.out
-                      nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid
-
                       EOF
                       echo "$deploy_frontend_script_env" > ./deploy_frontend.sh
                       chmod 700 ./deploy_frontend.sh
                       ./deploy_frontend.sh
+
+                  #   # 최초 여부에 따라 분기
+                  #   # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
+                  #   DIR="~/mono2"
+                  #   if [ -d "$DIR" ]; then
+
+                  #     # nohup으로 실행한 프로세스를 종료하기
+                  #     # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
+                  #     kill -9 `cat program.pid` || true
+
+                  #     # git fetch -all 과 동일
+                  #     git remote update
+
+                  #     # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
+                  #     git checkout main
+                  #     git branch -d ${{ github.head_ref || github.ref_name }} || true
+
+                  #     # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
+                  #     git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}
+
+                  #     git pull
+
+                  #   else
+
+                  #     npm install -g yarn
+                  #     git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git
+
+                  #   fi
+
+                  #   cd $DIR
+                  #   yarn
+                  #   yarn f build
+
+                  #   # nohup으로 실행해 종료되지 않게
+                  #   # https://stackoverflow.com/a/11856575
+                  #   rm nohup.out
+                  #   nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid
+
+                  # EOF
+                  #   echo "$deploy_frontend_script_env" > ./deploy_frontend.sh
+                  #   chmod 700 ./deploy_frontend.sh
+                  #   ./deploy_frontend.sh
