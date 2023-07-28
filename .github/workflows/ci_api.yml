@@ -18,8 +18,9 @@ jobs:
             - uses: actions/setup-node@v3
               with:
                   node-version: ${{ matrix.node-version }}
+              env:
+                  DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-            - run: export DATABASE_URL=${{ secrets.DATABASE_URL }}
             - run: yarn install
             - run: yarn a lint
             - run: yarn a prisma:format
