@@ -38,7 +38,7 @@ jobs:
                       source ~/.nvm/nvm.sh
 
                       # Node 16만 가능한 환경
-                      nvm intall 16
+                      nvm install 16
                       nvm use 16
 
                       cd /
