@@ -39,17 +39,15 @@ jobs:
 
                       # Node 16만 가능한 환경
                       # 이미 설치된 경우 error를 반환하므로 true 설정
-                      nvm install 16 || true
+                      nvm install 16
                       nvm use 16
 
-                      cd /
+                      cd ~
 
                       # 최초 여부에 따라 분기
                       # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
-                      DIR="/${{ github.event.repository.name }}"
+                      DIR="~/mono2"
                       if [ -d "$DIR" ]; then
-
-                        cd /${{ github.event.repository.name }}
 
                         # nohup으로 실행한 프로세스를 종료하기
                         # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
@@ -65,18 +63,20 @@ jobs:
                         # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
                         git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}
                         
-                        # 일단 모노레포 전체를 다운받기
                         git pull
 
                       else
+
                         npm install -g yarn
-                        git clone ${{ github.server_url }}/${{ github.repository }}
-                        cd ${{ github.server_url }}/${{ github.repository }}
+                        git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git
+
                       fi
 
+                      cd $DIR
                       yarn
                       yarn f build
 
                       # nohup으로 실행해 종료되지 않게
                       # https://stackoverflow.com/a/11856575
+                      rm nohup.out
                       nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid
