@@ -6,6 +6,10 @@ const nextConfig = {
     },
     reactStrictMode: true,
     transpilePackages: ['@collacode/apispec'],
+    // lint를 거치고 build가 되기 때문에 긴 lint를 다시 수행할 필요가 없다.
+    eslint: {
+        ignoreDuringBuilds: true,
+    },
 };
 
 module.exports = nextConfig;
@@ -44,11 +48,6 @@ const config = withSentryConfig(
 
         // Automatically tree-shake Sentry logger statements to reduce bundle size
         disableLogger: true,
-
-        // lint를 거치고 build가 되기 때문에 긴 lint를 다시 수행할 필요가 없다.
-        eslint: {
-            ignoreDuringBuilds: true,
-        },
     },
 );
 
