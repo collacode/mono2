@@ -67,7 +67,7 @@ jobs:
                         echo "fi" >> $SCRIPT
 
                       # 환경 변수 파일 생성
-                      echo "echo PORT=80 > ./frontend/.env.production" >> $SCRIPT
+                      echo "echo PORT=${{ vars.NEXT_PORT }} > ./frontend/.env.production" >> $SCRIPT
                       echo "echo NEXT_PUBLIC_API_MOCKING=${{ vars.NEXT_PUBLIC_API_MOCKING }} > ./frontend/.env.production" >> $SCRIPT
                       echo "echo SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }} >> ./frontend/.env.production" >> $SCRIPT
 
