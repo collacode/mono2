@@ -1,0 +1,60 @@
+name: CD for frontend
+
+on:
+    workflow_run:
+        workflows: ['CI for frontend']
+        types:
+            - completed
+
+jobs:
+    CD:
+        # CI 가 실패해도 completed여서, success 체크를 해줘야 함
+        # https://stackoverflow.com/a/64733705
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        runs-on: ubuntu-22.04
+
+        strategy:
+            matrix:
+                node-version: [16.x]
+
+        steps:
+            - name: Node.js 배포
+              uses: appleboy/ssh-action@v1.0.0
+              env:
+                  NEXT_PUBLIC_API_MOCKING: true,
+                  SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+              with:
+                  host: ${{ secrets.DEV_SERVER_HOST }}
+                  username: ${{ secrets.DEV_SERVER_USERNAME }}
+                  key: ${{ secrets.DEV_SERVER_KEY }}
+                  port: ${{ secrets.DEV_SERVER_PORT }}
+                  envs: NEXT_PUBLIC_API_MOCKING, SENTRY_AUTH_TOKEN
+                  script_stop: true
+                  script: |
+                      # nvm not on PATH: https://github.com/appleboy/ssh-action/issues/21
+                      export NVM_DIR=~/.nvm
+                      source ~/.nvm/nvm.sh
+                      cd /collacode/frontend
+
+                      # nohup으로 실행한 프로세스를 종료하기
+                      # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
+                      kill -9 `cat program.pid` || true
+
+                      # git fetch -all 과 동일
+                      git remote update
+
+                      # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
+                      git checkout main
+                      git branch -d ${{ github.head_ref || github.ref_name }} || true
+
+                      # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
+                      git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}
+
+                      # 일단 모노레포 전체를 다운받기
+                      git pull
+                      yarn
+                      yarn build
+
+                      # nohup으로 실행해 종료되지 않게
+                      # https://stackoverflow.com/a/11856575
+                      nohup yarn start > nohup.out & echo $! > program.pid

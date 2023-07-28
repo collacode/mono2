@@ -1,9 +1,9 @@
-name: CI for components
+name: CI for frontend
 
 on:
     push:
         branches: [main]
-        paths: 'components/**'
+        paths: 'frontend/**'
 
 jobs:
     CI:
@@ -20,5 +20,6 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - run: yarn install
-            - run: yarn c lint
-            - run: yarn c test
+            - run: yarn f lint
+            - run: yarn f test
+            - run: yarn f build
