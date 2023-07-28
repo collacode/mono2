@@ -42,50 +42,50 @@ jobs:
                       touch ./deploy_frontend.sh
 
                       # nvm PATH 설정
-                      echo "export NVM_DIR=~/.nvm" >> SCRIPT
-                      echo "source ~/.nvm/nvm.sh" >> SCRIPT
+                      echo "export NVM_DIR=~/.nvm" >> $SCRIPT
+                      echo "source ~/.nvm/nvm.sh" >> $SCRIPT
 
-                      echo "nvm install 16" >> SCRIPT
-                      echo "nvm use 16" >> SCRIPT
+                      echo "nvm install 16" >> $SCRIPT
+                      echo "nvm use 16" >> $SCRIPT
 
-                      echo "cd ~" >> SCRIPT
+                      echo "cd ~" >> $SCRIPT
 
                       # 최초 여부에 따라 분기
                       # 폴더가 없으면 clone 해야 하고, 있으면 pull 해야 함
-                      echo "DIR=\"~/${{ github.repository }}\"" >> SCRIPT
-                      echo "if [ -d \"$DIR\" ]; then" >> SCRIPT
+                      echo "DIR=\"~/${{ github.repository }}\"" >> $SCRIPT
+                      echo "if [ -d \"$DIR\" ]; then" >> $SCRIPT
 
                         # nohup으로 실행한 프로세스를 종료하기
                         # true를 반환해 shell이 종료되지 않음. 이 옵션은 /bin/sh -e 옵션을 줘서 테스트할 수 있음
-                        echo "kill -9 `cat program.pid` || true" >> SCRIPT
+                        echo "kill -9 `cat program.pid` || true" >> $SCRIPT
 
                         # git fetch -all 과 동일
-                        echo "git remote update" >> SCRIPT
+                        echo "git remote update" >> $SCRIPT
 
                         # 먼저 기존 branch를 제거함. 제거하기 위해선 다른 branch에 있어야 함.
-                        echo "git checkout main" >> SCRIPT
-                        echo "git branch -d ${{ github.head_ref || github.ref_name }} || true" >> SCRIPT
+                        echo "git checkout main" >> $SCRIPT
+                        echo "git branch -d ${{ github.head_ref || github.ref_name }} || true" >> $SCRIPT
 
                         # switch -c, checkout -b, checkout -t 모두 이미 있는 경우 오류가 발생함
-                        echo "git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}" >> SCRIPT
+                        echo "git checkout -b ${{ github.head_ref || github.ref_name }} origin/${{ github.head_ref || github.ref_name }}" >> $SCRIPT
                         
-                        echo "git pull" >> SCRIPT
+                        echo "git pull" >> $SCRIPT
 
-                        echo "else" >> SCRIPT
+                        echo "else" >> $SCRIPT
 
-                        echo "npm install -g yarn" >> SCRIPT
-                        echo "git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git" >> SCRIPT
+                        echo "npm install -g yarn" >> $SCRIPT
+                        echo "git clone https://${{ secrets.GIT_CLONE_TOKEN }}@${{ github.server_url }}/${{ github.repository }}.git" >> $SCRIPT
 
-                        echo "fi" >> SCRIPT
+                        echo "fi" >> $SCRIPT
 
-                      echo "cd $DIR" >> SCRIPT
-                      echo "yarn" >> SCRIPT
-                      echo "yarn f build" >> SCRIPT
+                      echo "cd $DIR" >> $SCRIPT
+                      echo "yarn" >> $SCRIPT
+                      echo "yarn f build" >> $SCRIPT
 
                       # nohup으로 실행해 종료되지 않게
                       # https://stackoverflow.com/a/11856575
-                      echo "rm -f nohup.out" >> SCRIPT
-                      echo "nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid" >> SCRIPT
+                      echo "rm -f nohup.out" >> $SCRIPT
+                      echo "nohup yarn f start > nohup.out 2>&1 & echo $! > program.pid" >> $SCRIPT
 
                       chmod 700 ./deploy_frontend.sh
                       cat ./deploy_frontend.sh
