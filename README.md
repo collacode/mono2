@@ -68,4 +68,6 @@ Select TypeScript Version > Use Workspace Version (5.1.6)
 
 ESLint는 패키지 root의 공통 설정에 각 workspace의 설정을 합치고 덮어쓰는 방식입니다. 개별 workspace에서 필요한 plugin/config는 개별 workspace에서 설치해야 합니다. 공통 plugin/config는 패키지 root에 설치하면 됩니다.
 
-gd
+### 3-3. Lint-staged 회피 방법
+
+환경 변수에 BYPASS_LINT_STAGED=true로 설정
