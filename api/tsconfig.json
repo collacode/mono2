@@ -10,14 +10,10 @@
         "strictBindCallApply": false,
         "forceConsistentCasingInFileNames": false,
         "noFallthroughCasesInSwitch": false,
-        // 시도 중
         "noEmit": false,
-        // "baseUrl": "../",
-        // "paths": {
-        //     "@collacode/apispec": ["./apispec/src/index.ts"]
-        // }
         "paths": {
-            "@prisma/*": ["./prisma/generated/*"]
+            // Prisma가 Yarn PNP를 지원하지 않아서 generate를 외부에 한다.
+            "@prisma/generated": ["./prisma/__generated__/prisma"]
         }
     },
     "include": ["src/**/*.ts"]

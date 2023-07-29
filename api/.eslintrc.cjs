@@ -5,6 +5,14 @@ module.exports = {
     env: {
         jest: true,
     },
+    settings: {
+        'import/resolver': {
+            typescript: {
+                // ESLint의 실행 기준이 root임
+                project: './api/tsconfig.json',
+            },
+        },
+    },
     rules: {
         '@typescript-eslint/interface-name-prefix': 'off',
         '@typescript-eslint/explicit-function-return-type': 'off',

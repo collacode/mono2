@@ -1,5 +1,6 @@
 generator client {
   provider = "prisma-client-js"
+  output = "./__generated__/prisma" // prisma 폴더를 의미
 }
 
 datasource db {
