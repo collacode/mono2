@@ -15,5 +15,13 @@ module.exports = {
             },
         },
     },
+    overrides: [
+        {
+            files: ['__e2e__/**'],
+            rules: {
+                'testing-library/prefer-screen-queries': 'off',
+            },
+        },
+    ],
     plugins: ['testing-library', 'jest-dom'],
 };

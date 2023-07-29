@@ -4827,6 +4827,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["@collacode/frontend", "workspace:frontend"],\
             ["@collacode/apispec", "workspace:apispec"],\
+            ["@playwright/test", "npm:1.36.2"],\
             ["@sentry/nextjs", "virtual:19c745ef0c1a151543d2f2981281909c612ee4d9a22b635e0f020a229e63913af1cab13bfe6c3945cb21bf5bf7a8162d855f9571658ab56acf019df767423021#npm:7.17.3"],\
             ["@testing-library/dom", "npm:9.3.1"],\
             ["@testing-library/jest-dom", "npm:5.16.5"],\
@@ -6587,6 +6588,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["open", "npm:9.1.0"],\
             ["picocolors", "npm:1.0.0"],\
             ["tslib", "npm:2.6.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@playwright/test", [\
+        ["npm:1.36.2", {\
+          "packageLocation": "./.yarn/cache/@playwright-test-npm-1.36.2-0b5c09b329-659304e0bb.zip/node_modules/@playwright/test/",\
+          "packageDependencies": [\
+            ["@playwright/test", "npm:1.36.2"],\
+            ["@types/node", "npm:20.4.2"],\
+            ["fsevents", "patch:fsevents@npm%3A2.3.2#~builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"],\
+            ["playwright-core", "npm:1.36.2"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -19623,6 +19636,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["jsonc-parser", "npm:3.2.0"],\
             ["mlly", "npm:1.4.0"],\
             ["pathe", "npm:1.1.1"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["playwright-core", [\
+        ["npm:1.36.2", {\
+          "packageLocation": "./.yarn/unplugged/playwright-core-npm-1.36.2-37b679cd9b/node_modules/playwright-core/",\
+          "packageDependencies": [\
+            ["playwright-core", "npm:1.36.2"]\
           ],\
           "linkType": "HARD"\
         }]\

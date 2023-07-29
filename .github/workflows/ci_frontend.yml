@@ -20,6 +20,14 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - run: yarn install
+            - run: yarn run playwright install --with-deps # playwright 의존성 따로 설치
             - run: yarn f lint
             - run: yarn f test
+            - run: yarn f test:e2e
             - run: yarn f build
+
+            - uses: actions/upload-artifact@v3
+              with:
+                  name: playwright-report
+                  path: playwright-report/
+                  retention-days: 30
