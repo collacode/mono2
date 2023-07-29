@@ -13,10 +13,6 @@ jobs:
             matrix:
                 node-version: [16.x]
 
-        # environment:
-        #         name: DATABASE_URL
-        #             ${{ secrets.DATABASE_URL }}
-
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
@@ -25,9 +21,10 @@ jobs:
               env:
                   DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
+            - run: echo DATABASE = $DATABASE_URL
             - run: yarn install
+            - run: yarn a prisma:generate # generate는 형상 관리 대상이 아님
             - run: yarn a lint
             - run: yarn a prisma:format
-            - run: yarn a prisma:migrate
             - run: yarn a test
             - run: yarn a build
