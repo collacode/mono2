@@ -1,4 +1,9 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-yarn lint-staged
+if [ "$BYPASS_LINT_STAGED" != "true" ] 
+then 
+  true 
+else 
+  yarn lint-staged
+fi

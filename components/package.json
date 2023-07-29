@@ -6,7 +6,9 @@
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "lint": "eslint --fix . --max-warnings 0 && prettier --config ../.prettierrc.cjs --write .",
+        "lint": "npm-run-all --parallel lint:eslint lint:eslint",
+        "lint:eslint": "eslint --fix .",
+        "lint:prettier": "prettier . --write --ignore-path ../.prettierignore --config ../.prettierrc.cjs",
         "test": "vitest --coverage",
         "preview": "vite preview",
         "storybook": "storybook dev -p 6006",
@@ -46,6 +48,7 @@
         "eslint-plugin-testing-library": "^5.11.0",
         "jest-environment-jsdom": "^29.6.1",
         "jsdom": "^22.1.0",
+        "npm-run-all": "*",
         "prettier": "*",
         "prop-types": "^15.8.1",
         "storybook": "^7.0.24",

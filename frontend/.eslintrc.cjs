@@ -24,4 +24,10 @@ module.exports = {
         },
     ],
     plugins: ['testing-library', 'jest-dom'],
+    ignorePatterns: [
+        '**/.next/**',
+        '**/playwright-report/**',
+        '**/test-results/**',
+        '**/coverage/**',
+    ],
 };
