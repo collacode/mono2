@@ -14,6 +14,10 @@ jobs:
             matrix:
                 node-version: [16.x]
 
+        env:
+            NEXT_PUBLIC_API_MOCKING: ${{ vars.NEXT_PUBLIC_API_MOCKING }}
+            SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+
         steps:
             - uses: actions/checkout@v3
             - uses: actions/setup-node@v3
