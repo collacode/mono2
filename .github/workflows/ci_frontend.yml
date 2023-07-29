@@ -25,6 +25,8 @@ jobs:
             - run: yarn f lint
             - run: yarn f test
             - run: yarn f test:e2e
+            - run: yarn f run msw init public
+            - run: yarn f run next telemetry disable
             - run: yarn f build
 
             - uses: actions/upload-artifact@v3
