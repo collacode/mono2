@@ -14,7 +14,7 @@
         "as": "yarn workspace @collacode/apispec",
         "c": "yarn workspace @collacode/components",
         "f": "yarn workspace @collacode/frontend",
-        "lint": "npm-run-all --parallel yarn lint:all-packages yarn lint:root-folder",
+        "lint": "npm-run-all --parallel lint:all-packages lint:root-folder",
         "lint:all-packages": "yarn workspaces foreach -p run lint",
         "lint:root-folder": "npm-run-all --parallel lint:root-folder:eslint lint:root-folder:eslint",
         "lint:root-folder:eslint": "eslint --fix './*'",
