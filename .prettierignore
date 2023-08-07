@@ -10,3 +10,4 @@
 !**/.github
 yarn.lock
 .prettierignore
+**/prisma/**

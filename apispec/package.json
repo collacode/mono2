@@ -6,8 +6,8 @@
     "types": "src/index.ts",
     "scripts": {
         "lint": "npm-run-all --parallel lint:eslint lint:eslint",
-        "lint:eslint": "eslint --fix .",
-        "lint:prettier": "prettier . --write --ignore-path ../.prettierignore --config ../.prettierrc.cjs"
+        "lint:eslint": "eslint . --fix --ext cjs,.js,.jsx,.ts,.tsx",
+        "lint:prettier": "prettier . --write --ignore-unknown --ignore-path ../.prettierignore --config ../.prettierrc.cjs"
     },
     "devDependencies": {
         "eslint": "*",
