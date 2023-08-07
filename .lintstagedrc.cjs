@@ -14,5 +14,5 @@ module.exports = {
     './apispec/**/*': () => 'yarn as lint',
     './components/**/*': () => 'yarn c lint',
     './frontend/**/*': [buildEslintCommand],
-    './*.*': () => 'yarn lint:root',
+    './*.*': () => 'yarn lint:r',
 };
