@@ -27,7 +27,7 @@ yarn dlx @yarnpkg/sdks vscode
 yarn f msw init public # msw 설정
 ```
 
-### 1-1-1. `yarn sdks vscode`는 가 하는 일에 대하여
+### 1-1-1. `yarn sdks vscode`가 하는 일에 대하여
 
 1. `.yarn/sdks/` 폴더에 `eslint`, `prettier`, `typescript` 폴더를 만들고 바이너리를 패치하는 js를 생성합니다.
 
