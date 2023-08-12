@@ -25,6 +25,8 @@ nvm use 16 # Node 16 사용
 yarn # 일부 의존성의 postinstall 실행
 yarn dlx @yarnpkg/sdks vscode 
 yarn f msw init public # msw 설정
+yarn f playwright install # playwright 브라우저 설치
+yarn f playwright install-deps # playwright 브라우저 실행에 필요한 의존성 설치
 ```
 
 ### 1-1-1. `yarn sdks vscode`가 하는 일에 대하여
