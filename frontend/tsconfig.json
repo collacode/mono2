@@ -9,7 +9,7 @@
         "isolatedModules": true,
         "jsx": "preserve",
         "paths": {
-            "@src/*": ["./src/*"]
+            "#/*": ["./*"]
         },
         "allowJs": true
     },
