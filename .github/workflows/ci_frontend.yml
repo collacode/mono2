@@ -25,7 +25,9 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - run: yarn install
+            - run: yarn f playwright install # 브라우저가 설치되어 있는지 검증한다고 함
             - run: yarn f playwright install-deps # playwright 의존성 따로 설치
+            - run: yarn f playwright install # 브라우저가 설치되어 있는지 검증한다고 함
             - run: ls -alh ~/.cache
             - run: ls -alh ~/.cache/ms-playwright
             - run: yarn f lint
