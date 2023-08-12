@@ -3,6 +3,7 @@ module.exports = {
         'next/core-web-vitals',
         'plugin:testing-library/react',
         'plugin:jest-dom/recommended',
+        'plugin:@tanstack/eslint-plugin-query/recommended',
     ],
     settings: {
         react: {
@@ -23,7 +24,7 @@ module.exports = {
             },
         },
     ],
-    plugins: ['testing-library', 'jest-dom'],
+    plugins: ['testing-library', 'jest-dom', '@tanstack/query'],
     ignorePatterns: [
         '**/.next/**',
         '**/playwright-report/**',
