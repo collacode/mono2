@@ -25,12 +25,14 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - run: yarn install
-            - run: yarn f run playwright install-deps # playwright 의존성 따로 설치
+            - run: yarn f playwright install-deps # playwright 의존성 따로 설치
+            - run: ls -alh ~/.cache
+            - run: ls -alh ~/.cache/ms-playwright
             - run: yarn f lint
             - run: yarn f test
             - run: yarn f test:e2e
-            - run: yarn f run msw init public
-            - run: yarn f run next telemetry disable
+            - run: yarn f msw init public
+            - run: yarn f next telemetry disable
             - run: yarn f build
 
             - uses: actions/upload-artifact@v3
