@@ -25,7 +25,7 @@ jobs:
                   node-version: ${{ matrix.node-version }}
 
             - run: yarn install
-            - run: yarn f dlx playwright install --with-deps # playwright 의존성 따로 설치
+            - run: yarn f run playwright install-deps # playwright 의존성 따로 설치
             - run: yarn f lint
             - run: yarn f test
             - run: yarn f test:e2e
