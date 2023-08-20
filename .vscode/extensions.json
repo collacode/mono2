@@ -3,6 +3,7 @@
         "arcanis.vscode-zipfs",
         "dbaeumer.vscode-eslint",
         "heybourn.headwind",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "davidanson.vscode-markdownlint"
     ]
 }
